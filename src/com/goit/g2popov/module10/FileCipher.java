@@ -27,22 +27,25 @@ public class FileCipher {
                 PrintWriter writer = null;
                 try {
                         writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(this.pathway)));
+                        Scanner scanner = new Scanner(System.in);
+                        String nextLine;
+                        do {
+                                System.out.println("Enter a line: ");
+                                nextLine = scanner.nextLine();
+                                if (!nextLine.equals("enough")) {
+                                        writer.print(encodeLine(nextLine));
+                                        writer.println();
+                                }
+                        } while (!nextLine.equals("enough"));
                 } catch (FileNotFoundException e) {
                         System.out.println("Failed to create a file according to the pathway given!");
-                }
-                Scanner scanner = new Scanner(System.in);
-                String nextLine;
-                do {
-                        System.out.println("Enter a line: ");
-                        nextLine = scanner.nextLine();
-                        if (!nextLine.equals("enough")) {
-                                writer.print(encodeLine(nextLine));
-                                writer.println();
+                } finally {
+                        if (writer != null) {
+                                writer.flush();
+                                writer.close();
                         }
-                } while (!nextLine.equals("enough"));
 
-                writer.flush();
-                writer.close();
+                }
         }
 
         private String encodeLine(String line) {
