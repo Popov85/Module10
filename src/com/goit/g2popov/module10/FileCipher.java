@@ -28,7 +28,7 @@ public class FileCipher {
                 try {
                         writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(this.pathway)));
                 } catch (FileNotFoundException e) {
-                        System.out.println("Filed to create a file according to the pathway given!");
+                        System.out.println("Failed to create a file according to the pathway given!");
                 }
                 Scanner scanner = new Scanner(System.in);
                 String nextLine;
@@ -58,7 +58,7 @@ public class FileCipher {
                                 System.out.println(decodeLine(scanner.nextLine()));
                         }
                 } catch (FileNotFoundException e) {
-                        System.out.println("Filed to open a file according to the pathway given!");
+                        System.out.println("Failed to open a file according to the pathway given!");
                 } finally {
                         if (scanner != null) scanner.close();
                 }
