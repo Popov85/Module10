@@ -31,11 +31,21 @@ public class CipherEngine implements Encodable {
                 return statement;
         }
 
+        @Override
+        public String cipher() {
+                return cipher(true);
+        }
+
+        @Override
+        public String decipher() {
+                return cipher(false);
+        }
+
         /**
          * Realizes the Caesar algorithm for coding and decoding
          * @param isToCipher - whether you will cipher or decipher, true for coding, false for decoding
          */
-        public String cipher(boolean isToCipher) {
+        private String cipher(boolean isToCipher) {
                 StringBuilder output = new StringBuilder();
                 int size = statement.length();
                 String alphabet;
@@ -43,15 +53,11 @@ public class CipherEngine implements Encodable {
                 int position, actualPosition;
                 for (int i = 0; i < size; i++){
                         char c = statement.charAt(i);
-                        if (c == ' ') {
-                                output.append(" ");
-                        } else {
-                                data = getData(c);
-                                alphabet = data[0];
-                                position = Integer.parseInt(data[1]) ;
-                                actualPosition = getActualPosition(position, isToCipher);
-                                output.append(getChar(actualPosition, alphabet, c));
-                        }
+                        data = getData(c);
+                        alphabet = data[0];
+                        position = Integer.parseInt(data[1]) ;
+                        actualPosition = getActualPosition(position, isToCipher);
+                        output.append(getChar(actualPosition, alphabet, c));
                 }
                 return output.toString();
         }

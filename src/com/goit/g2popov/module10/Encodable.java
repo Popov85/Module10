@@ -7,10 +7,21 @@ package com.goit.g2popov.module10;
  */
 
 public interface Encodable {
+
         char[] ALPHABET_LOWER = "abcdefghijklmnopqrstuvwxyz".toCharArray();
         char[] ALPHABET_UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
         int MAX_INDEX = ALPHABET_LOWER.length;
         int MIN_SHIFT = 3;
 
-        String cipher(boolean isToCipher);
+        /**
+         * Returns the coded string by the mean of Caesar algorithm
+         * @return
+         */
+        String cipher();
+
+        /**
+         * Returns the decoded string that was coded by the mean of Caesar algorithm
+         * @return
+         */
+        String decipher();
 }

@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class FileCipher {
 
         private static final int SHIFT = 3;
-        private static CipherEngine encryptionEngine = new CipherEngine("",SHIFT);
+        private static final CipherEngine encryptionEngine = new CipherEngine("",SHIFT);
 
         private String pathway;
 
@@ -23,6 +23,11 @@ public class FileCipher {
                 this.pathway = pathway;
         }
 
+        /**
+         * Writes into a file line by line
+         * User enters every line which then is coded by Caesar algorithms
+         * and is written into a file
+         */
         public void writeByLineCoded() {
                 PrintWriter writer = null;
                 try {
@@ -50,9 +55,12 @@ public class FileCipher {
 
         private String encodeLine(String line) {
                 encryptionEngine.setStatement(line);
-                return encryptionEngine.cipher(true);
+                return encryptionEngine.cipher();
         }
 
+        /**
+         * Reads a file line by line with decoding
+         */
         public void readByLineDecoded() {
                 Scanner scanner = null;
                 try {
@@ -69,6 +77,6 @@ public class FileCipher {
 
         private String decodeLine(String line) {
                 encryptionEngine.setStatement(line);
-                return encryptionEngine.cipher(false);
+                return encryptionEngine.decipher();
         }
 }
