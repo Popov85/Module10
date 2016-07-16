@@ -1,5 +1,8 @@
 package com.goit.g2popov.module10;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 /**
  * Class {@code Runner} Module 10
  * Task. Encrypt/decrypt text files
@@ -8,10 +11,10 @@ package com.goit.g2popov.module10;
  **/
 public class Runner {
 
-        private static final String PATH_WAY = "D:\\Java2016/Module10/src/SampleFile.txt";
+        private static final Path PATH = Paths.get("src/SampleFile.txt");
 
         public static void main(String[] args) {
-                FileCipher fileCipher = new FileCipher(PATH_WAY);
+                FileCipher fileCipher = new FileCipher(PATH);
                 fileCipher.writeByLineCoded();
                 fileCipher.readByLineDecoded();
         }

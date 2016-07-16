@@ -102,10 +102,10 @@ public class CipherEngine implements Encodable {
         }
 
         private char getChar(int position, String alphabet, char c) {
-                if (alphabet.equals("LOWER")) {
+                if ("LOWER".equals(alphabet)) {
                         return ALPHABET_LOWER[position];
                 }
-                else if (alphabet.equals("UPPER")) {
+                else if ("UPPER".equals(alphabet)) {
                         return ALPHABET_UPPER[position];
                 }
                 else {

@@ -1,6 +1,7 @@
 package com.goit.g2popov.module10;
 
 import java.io.*;
+import java.nio.file.Path;
 import java.util.Scanner;
 
 /**
@@ -17,9 +18,9 @@ public class FileCipher {
         private static final int SHIFT = 3;
         private static final CipherEngine encryptionEngine = new CipherEngine("",SHIFT);
 
-        private String pathway;
+        private Path pathway;
 
-        public FileCipher (String pathway) {
+        public FileCipher (Path pathway) {
                 this.pathway = pathway;
         }
 
@@ -31,7 +32,7 @@ public class FileCipher {
         public void writeByLineCoded() {
                 PrintWriter writer = null;
                 try {
-                        writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(this.pathway)));
+                        writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(pathway.toString())));
                         Scanner scanner = new Scanner(System.in);
                         String nextLine;
                         do {
@@ -64,7 +65,7 @@ public class FileCipher {
         public void readByLineDecoded() {
                 Scanner scanner = null;
                 try {
-                        scanner = new Scanner(new BufferedReader(new FileReader(this.pathway)));
+                        scanner = new Scanner(new BufferedReader(new FileReader(pathway.toString())));
                         while (scanner.hasNextLine()) {
                                 System.out.println(decodeLine(scanner.nextLine()));
                         }
